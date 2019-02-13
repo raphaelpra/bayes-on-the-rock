@@ -20,6 +20,11 @@ describe("Density test", () => {
     expect(genders.density("female")).toEqual(1/2)
     expect(genders.density("other")).toEqual(0)
   })
+
+  it("Throw an error if the list of outcomes is empty", () => {
+    const emptyChoiceSet = new ChoiceSet()
+    expect(() => emptyChoiceSet.density("whatever")).toThrow()
+  })
 })
 
 describe("Density of set test", () => {
