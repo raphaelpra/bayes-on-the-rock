@@ -1,5 +1,4 @@
-
 export interface IOmega<T = string> {
-  outcomes: T[]
+  outcomes: () => T[]
   density: (...variables: T[]) => number
 }
