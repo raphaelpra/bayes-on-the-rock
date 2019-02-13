@@ -1,13 +1,9 @@
 import { ChoiceSet, CoinFlip, Gender } from "../src/ChoiceSet"
 
-/**
- * Dummy test
- */
 describe("Builder test", () => {
   it("ChoiceSet is a constructor", () => {
     const choiceSet = ChoiceSet()
     expect(choiceSet.type).toBe("ChoiceSet")
-    expect(choiceSet).toHaveProperty("type")
   })
 })
 
