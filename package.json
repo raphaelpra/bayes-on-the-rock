@@ -2,7 +2,10 @@
   "name": "bayes-on-the-rock",
   "version": "0.1.0",
   "description": "Manipulate Bayes Theorem with a simple calculator",
-  "keywords": ["Bayes", "Learning"],
+  "keywords": [
+    "Bayes",
+    "Learning"
+  ],
   "main": "dist/bayes-on-the-rock.umd.js",
   "module": "dist/bayes-on-the-rock.es5.js",
   "typings": "dist/types/bayes-on-the-rock.d.ts",
@@ -23,7 +26,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
-    "test": "jest --coverage",
+    "test": "jest --coverage --collectCoverageFrom=!src/bayes-on-the-rock.ts",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
@@ -116,5 +119,8 @@
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.12.0",
     "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
   }
 }
