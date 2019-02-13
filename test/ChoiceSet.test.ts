@@ -1,4 +1,4 @@
-import { ChoiceSet } from "../src/ChoiceSet"
+import { ChoiceSet, CoinFlip, Gender } from "../src/ChoiceSet"
 
 /**
  * Dummy test
@@ -30,5 +30,19 @@ describe("Density of set test", () => {
     const colors = ChoiceSet("blue", "red", "green", "yellow", "orange")
     expect(colors.density("blue", "red")).toEqual(2 / 5)
     expect(colors.density()).toEqual(0)
+  })
+})
+
+describe("CoinFlip", () => {
+  it("Has an outcome of head/tails", () => {
+    expect(CoinFlip().outcomes()).toContain("head")
+    expect(CoinFlip().outcomes()).toContain("tails")
+  })
+})
+
+describe("Gender", () => {
+  it("Has an outcome of male/female", () => {
+    expect(Gender().outcomes()).toContain("male")
+    expect(Gender().outcomes()).toContain("female")
   })
 })
