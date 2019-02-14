@@ -9,7 +9,7 @@ describe("Builder test", () => {
 
   it("Throw an error if the object is empty", () => {
     const omega = Composite({})
-    expect(() => omega.density({ key: "whatever"})).toThrow()
+    expect(() => omega.density({ key: "whatever" })).toThrow()
   })
 })
 
@@ -25,11 +25,12 @@ describe("Simple composite object test", () => {
 describe("Double composite object test", () => {
   it("Retrieve an uniform density for all possible outcomes", () => {
     const omega = Composite({ gender1: Gender(), gender2: Gender() })
-    expect(omega.density({ gender1: "male",   gender2: "male" })).toEqual(1 / 4)
-    expect(omega.density({ gender1: "male",   gender2: "female" })).toEqual(1 / 4)
+    expect(omega.density({ gender1: "male", gender2: "male" })).toEqual(1 / 4)
+    expect(omega.density({ gender1: "male", gender2: "female" })).toEqual(1 / 4)
     expect(omega.density({ gender1: "female", gender2: "male" })).toEqual(1 / 4)
-    expect(omega.density({ gender1: "female", gender2: "female" })).toEqual(1 / 4)
-    expect(omega.density({ gender1: "other",  gender2: "male" })).toEqual(0)
+    expect(omega.density({ gender1: "female", gender2: "female" })).toEqual(
+      1 / 4
+    )
+    expect(omega.density({ gender1: "other", gender2: "male" })).toEqual(0)
   })
 })
-
