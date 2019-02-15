@@ -1,18 +1,14 @@
-import { IOmega } from "./omega"
-import { filter } from "lodash/fp"
-import { isIn } from "./utils"
+import { Univers } from "./types/Univers"
+import { fromPairs, map, compose, tap } from "lodash/fp"
+import { arrayParametersToArray } from "./utils"
 
-export const ChoiceSet = (...outcomes: string[]): IOmega<string> => ({
-  type: "ChoiceSet",
-  outcomes: () => outcomes,
-  density: (...variables: string[]) => {
-    if (outcomes.length === 0) {
-      throw new Error("Impossible to define a density for an empty choiceset")
-    }
-    const count: number = filter(isIn(variables))(outcomes).length
-    return count / outcomes.length
-  }
-})
+export type ChoiceSetFunction = (...options: string[]) => Univers<string>
+
+export const ChoiceSet: ChoiceSetFunction = compose(
+  fromPairs,
+  map(o => [o, 1]),
+  arrayParametersToArray
+)
 
 export const CoinFlip = () => ChoiceSet("head", "tails")
-export const Gender = () => ChoiceSet("male", "female")
+export const Genders = () => ChoiceSet("male", "female")

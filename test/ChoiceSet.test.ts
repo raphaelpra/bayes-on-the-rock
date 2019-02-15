@@ -1,44 +1,27 @@
-import { ChoiceSet, CoinFlip, Gender } from "../src/ChoiceSet"
+import { ChoiceSet, CoinFlip, Genders } from "../src/ChoiceSet"
+import { Univers } from "../src/types/Univers"
 
-describe("Builder test", () => {
-  it("ChoiceSet is a constructor", () => {
-    const choiceSet = ChoiceSet()
-    expect(choiceSet.type).toBe("ChoiceSet")
-  })
-})
-
-describe("Density test", () => {
-  it("Retrieve an uniform density for all possible outcomes", () => {
-    const genders = ChoiceSet("male", "female")
-    expect(genders.density("male")).toEqual(1 / 2)
-    expect(genders.density("female")).toEqual(1 / 2)
-    expect(genders.density("other")).toEqual(0)
-  })
-
-  it("Throw an error if the list of outcomes is empty", () => {
-    const emptyChoiceSet = ChoiceSet()
-    expect(() => emptyChoiceSet.density("whatever")).toThrow()
-  })
-})
-
-describe("Density of set test", () => {
-  it("Retrieve an uniform density for a subset of all possible outcomes", () => {
-    const colors = ChoiceSet("blue", "red", "green", "yellow", "orange")
-    expect(colors.density("blue", "red")).toEqual(2 / 5)
-    expect(colors.density()).toEqual(0)
+describe("ChoiceSet test", () => {
+  it("Has equaly distributed outcomes", () => {
+    const choiceSet: Univers<string> = ChoiceSet(
+      "option1",
+      "option2",
+      "option3"
+    )
+    expect(choiceSet).toEqual({ option1: 1, option2: 1, option3: 1 })
   })
 })
 
 describe("CoinFlip", () => {
   it("Has an outcome of head/tails", () => {
-    expect(CoinFlip().outcomes()).toContain("head")
-    expect(CoinFlip().outcomes()).toContain("tails")
+    const flip: Univers<string> = CoinFlip()
+    expect(flip).toEqual({ head: 1, tails: 1 })
   })
 })
 
-describe("Gender", () => {
+describe("Genders", () => {
   it("Has an outcome of male/female", () => {
-    expect(Gender().outcomes()).toContain("male")
-    expect(Gender().outcomes()).toContain("female")
+    const genders: Univers<string> = Genders()
+    expect(genders).toEqual({ male: 1, female: 1 })
   })
 })

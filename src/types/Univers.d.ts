@@ -1,7 +1,9 @@
-import { Event, EventNode, EventFinalNode } from "./Event"
+import { Event, EventNode, LeafValue } from "./Event"
 
-export type Univers<T extends Event> = T extends (EventFinalNode)
-  ? { [Key in keyof T]: { [Key2 in T[Key]]: number } }
+export type Univers<T extends Event> = T extends string
+  ? { [Key: string]: number }
+  : T extends number
+  ? { [Key: number]: number }
   : T extends EventNode<Event>
   ? { [Key in keyof T]: Univers<T[Key]> }
   : never
