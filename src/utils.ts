@@ -1,4 +1,4 @@
-import { tap } from "lodash/fp"
+import { tap } from "ramda"
 
 export const arrayParametersToArray = (...args: any) => args
 export const logAndReturn = (prefix: string) =>

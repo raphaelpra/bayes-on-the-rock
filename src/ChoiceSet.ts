@@ -1,8 +1,8 @@
 import { Univers } from "./types/Univers"
-import { fromPairs, map, compose, tap } from "lodash/fp"
+import { fromPairs, map, compose, tap } from "ramda"
 import { arrayParametersToArray } from "./utils"
 
-export type ChoiceSetType = (...options: string[]) => Univers<string>
+export type ChoiceSetType = (...options: string[]) => Univers
 
 export const ChoiceSet: ChoiceSetType = compose(
   fromPairs,

@@ -123,6 +123,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "@types/ramda": "^0.25.50",
+    "ramda": "^0.26.1"
   }
 }
