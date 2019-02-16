@@ -1,4 +1,4 @@
-import { ChoiceSet, CoinFlip, Genders } from "../src/ChoiceSet"
+import { ChoiceSet, CoinFlip, Genders, Dice } from "../src/ChoiceSet"
 
 describe("ChoiceSet test", () => {
   it("Has equaly distributed outcomes", () => {
@@ -28,6 +28,20 @@ describe("Genders", () => {
     expect(genders).toEqual([
       { value: "male", weight: 1 }, 
       { value: "female", weight: 1 }, 
+    ])
+  })
+})
+
+describe("Dices", () => {
+  it("Has an outcome of 1/2/3/4/5/6", () => {
+    const dice = Dice(6)
+    expect(dice).toEqual([
+      { value: 1, weight: 1 }, 
+      { value: 2, weight: 1 }, 
+      { value: 3, weight: 1 }, 
+      { value: 4, weight: 1 }, 
+      { value: 5, weight: 1 }, 
+      { value: 6, weight: 1 }, 
     ])
   })
 })

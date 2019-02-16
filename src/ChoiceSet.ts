@@ -1,8 +1,8 @@
 import { Univers  } from "./types/Univers"
-import { fromPairs, map, compose } from "lodash/fp"
+import { map, compose, times } from "lodash/fp"
 import { arrayParametersToArray } from "./utils"
 
-export type ChoiceSetType = (...options: string[]) => Univers<string>
+export type ChoiceSetType<T> = (...options: T[]) => Univers<T>
 
 // @ts-ignore
 export const ChoiceSet: ChoiceSetType = compose(
@@ -12,3 +12,6 @@ export const ChoiceSet: ChoiceSetType = compose(
 
 export const CoinFlip = () => ChoiceSet("head", "tails")
 export const Genders = () => ChoiceSet("male", "female")
+
+export type DiceType = (n: number) => ChoiceSetType<number>
+export const Dice: DiceType = (n: number) => ChoiceSet(...times((i: number) => i+1, n))
