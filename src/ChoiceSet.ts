@@ -10,8 +10,8 @@ export const ChoiceSet: ChoiceSetType = compose(
   arrayParametersToArray,
 )
 
-export const CoinFlip = () => ChoiceSet("head", "tails")
-export const Genders = () => ChoiceSet("male", "female")
+export const CoinFlip: ChoiceSetType<string> = () => ChoiceSet("head", "tails")
+export const Genders: ChoiceSetType<string> = () => ChoiceSet("male", "female")
 
 export type DiceType = (n: number) => ChoiceSetType<number>
 export const Dice: DiceType = (n: number) => ChoiceSet(...times((i: number) => i+1, n))
