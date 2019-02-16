@@ -1,8 +1,4 @@
-export type GenericEvent<T> = {
-  [Key: string]: T
+export type Event<T> = {
+  value: T
+  weight: number
 }
-
-export type NumericalEvent = GenericEvent<number>
-export type StringEvent = GenericEvent<number>
-
-export type Event = StringEvent

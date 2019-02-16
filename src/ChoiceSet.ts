@@ -1,14 +1,12 @@
-import { Univers, Weight } from "./types/Univers"
-import { fromPairs, map, compose } from "ramda"
-import { arrayParametersToArray, logAndReturn } from "./utils"
+import { Univers  } from "./types/Univers"
+import { fromPairs, map, compose } from "lodash/fp"
+import { arrayParametersToArray } from "./utils"
 
-export type ChoiceSetType = (...options: string[]) => Weight
+export type ChoiceSetType = (...options: string[]) => Univers<string>
 
 // @ts-ignore
 export const ChoiceSet: ChoiceSetType = compose(
-  fromPairs,
-  // @ts-ignore
-  map<string, [string, number]>(o => [o, 1]),
+  map((s: string) => ({ value: s, weight: 1})),
   arrayParametersToArray,
 )
 
