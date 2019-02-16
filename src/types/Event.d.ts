@@ -4,3 +4,5 @@ export type GenericEvent<T> = {
 
 export type NumericalEvent = GenericEvent<number>
 export type StringEvent = GenericEvent<number>
+
+export type Event = StringEvent

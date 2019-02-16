@@ -1,13 +1,15 @@
-import { Univers } from "./types/Univers"
-import { fromPairs, map, compose, tap } from "ramda"
-import { arrayParametersToArray } from "./utils"
+import { Univers, Weight } from "./types/Univers"
+import { fromPairs, map, compose } from "ramda"
+import { arrayParametersToArray, logAndReturn } from "./utils"
 
-export type ChoiceSetType = (...options: string[]) => Univers
+export type ChoiceSetType = (...options: string[]) => Weight
 
+// @ts-ignore
 export const ChoiceSet: ChoiceSetType = compose(
   fromPairs,
-  map(o => [o, 1]),
-  arrayParametersToArray
+  // @ts-ignore
+  map<string, [string, number]>(o => [o, 1]),
+  arrayParametersToArray,
 )
 
 export const CoinFlip = () => ChoiceSet("head", "tails")

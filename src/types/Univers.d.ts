@@ -1,7 +1,9 @@
 export type Univers = {
-  [Key: string]: {
-    [Variable: string]: number
-  }
+  [Key: string]: Weight
+}
+
+export type Weight = {
+  [variable: string]: number
 }
 
 // import { Event, EventNode, LeafValue } from "./Event"
