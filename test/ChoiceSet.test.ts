@@ -1,44 +1,46 @@
-import { ChoiceSet, CoinFlip, Gender } from "../src/ChoiceSet"
+import { ChoiceSet, CoinFlip, Genders, Dice } from "../src/ChoiceSet"
 
-describe("Builder test", () => {
-  it("ChoiceSet is a constructor", () => {
-    const choiceSet = ChoiceSet()
-    expect(choiceSet.type).toBe("ChoiceSet")
-  })
-})
-
-describe("Density test", () => {
-  it("Retrieve an uniform density for all possible outcomes", () => {
-    const genders = ChoiceSet("male", "female")
-    expect(genders.density("male")).toEqual(1 / 2)
-    expect(genders.density("female")).toEqual(1 / 2)
-    expect(genders.density("other")).toEqual(0)
-  })
-
-  it("Throw an error if the list of outcomes is empty", () => {
-    const emptyChoiceSet = ChoiceSet()
-    expect(() => emptyChoiceSet.density("whatever")).toThrow()
-  })
-})
-
-describe("Density of set test", () => {
-  it("Retrieve an uniform density for a subset of all possible outcomes", () => {
-    const colors = ChoiceSet("blue", "red", "green", "yellow", "orange")
-    expect(colors.density("blue", "red")).toEqual(2 / 5)
-    expect(colors.density()).toEqual(0)
+describe("ChoiceSet test", () => {
+  it("Has equaly distributed outcomes", () => {
+    const choiceSet = ChoiceSet("option1", "option2", "option3")
+    expect(choiceSet).toEqual([
+      { value: "option1", weight: 1 },
+      { value: "option2", weight: 1 },
+      { value: "option3", weight: 1 }
+    ])
   })
 })
 
 describe("CoinFlip", () => {
   it("Has an outcome of head/tails", () => {
-    expect(CoinFlip().outcomes()).toContain("head")
-    expect(CoinFlip().outcomes()).toContain("tails")
+    const flip = CoinFlip()
+    expect(flip).toEqual([
+      { value: "head", weight: 1 },
+      { value: "tails", weight: 1 }
+    ])
   })
 })
 
-describe("Gender", () => {
+describe("Genders", () => {
   it("Has an outcome of male/female", () => {
-    expect(Gender().outcomes()).toContain("male")
-    expect(Gender().outcomes()).toContain("female")
+    const genders = Genders()
+    expect(genders).toEqual([
+      { value: "male", weight: 1 },
+      { value: "female", weight: 1 }
+    ])
+  })
+})
+
+describe("Dices", () => {
+  it("Has an outcome of 1/2/3/4/5/6", () => {
+    const dice = Dice(6)
+    expect(dice).toEqual([
+      { value: 1, weight: 1 },
+      { value: 2, weight: 1 },
+      { value: 3, weight: 1 },
+      { value: 4, weight: 1 },
+      { value: 5, weight: 1 },
+      { value: 6, weight: 1 }
+    ])
   })
 })

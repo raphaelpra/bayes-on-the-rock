@@ -1,4 +1,3 @@
-import { ChoiceSet, IOmega } from "../src/bayes-on-the-rock"
 /**
  * Dummy test
  */

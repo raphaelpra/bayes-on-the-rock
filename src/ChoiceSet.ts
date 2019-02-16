@@ -1,21 +1,18 @@
-import { IOmega } from "./omega"
-import { filter } from "lodash/fp"
-import { isIn } from "./utils";
+import { Univers } from "./types/Univers"
+import { map, compose, times } from "lodash/fp"
+import { arrayParametersToArray } from "./utils"
 
-export const ChoiceSet = (...outcomes: string[]): IOmega<string> => (
-  {
-    type: "ChoiceSet",
-    outcomes: () => outcomes,
-    density: (...variables: string[]) => {
-      if (outcomes.length === 0) {
-        throw new Error("Impossible to define a density for an empty choiceset")
-      }
-      const count: number = filter(isIn(variables))(outcomes).length
-      return count / outcomes.length
-    }
-  }
+export type ChoiceSetType<T> = (...options: T[]) => Univers<T>
+
+// @ts-ignore
+export const ChoiceSet: ChoiceSetType = compose(
+  map((s: string) => ({ value: s, weight: 1 })),
+  arrayParametersToArray
 )
 
- export const CoinFlip = () => ChoiceSet("head", "tails")
- export const Gender = () => ChoiceSet("male", "female")
+export const CoinFlip: ChoiceSetType<string> = () => ChoiceSet("head", "tails")
+export const Genders: ChoiceSetType<string> = () => ChoiceSet("male", "female")
 
+export type DiceType = (n: number) => Univers<number>
+export const Dice: DiceType = (n: number) =>
+  ChoiceSet(...times((i: number) => i + 1, n))
