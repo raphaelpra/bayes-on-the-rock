@@ -22,6 +22,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "example": "npm run build && node examples/kids.js",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prettier": "prettier **/*.ts --write",
     "prebuild": "rimraf dist",

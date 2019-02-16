@@ -1,11 +1,11 @@
 import { Univers } from "./types/Univers"
-import { map, compose, times } from "lodash/fp"
+import { map, flowRight, times } from "lodash/fp"
 import { arrayParametersToArray } from "./utils"
 
 export type ChoiceSetType<T> = (...options: T[]) => Univers<T>
 
 // @ts-ignore
-export const ChoiceSet: ChoiceSetType = compose(
+export const ChoiceSet: ChoiceSetType = flowRight(
   map((s: string) => ({ value: s, weight: 1 })),
   arrayParametersToArray
 )
