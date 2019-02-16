@@ -1,4 +1,3 @@
-import { Dice } from "../../src/ChoiceSet"
 import { product } from "../../src/fp/product"
 
 describe("Product test", () => {
