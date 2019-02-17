@@ -12,7 +12,12 @@ console.log("Each one can be a male/female")
 
 console.log("Number of possibilities:", all.length)
 
-const with1Male = filter(([k1, k2]) => (k1 === "male") || (k2 === "male"))
+const with1Male = filter(([kid1, kid2]) => kid1 === "male" || kid2 === "male")(all)
+const with2Male = filter(([kid1, kid2]) => kid1 === "male" && kid2 === "female")(all)
+
 console.log("Number of possibilities with at least 1 boy:", with1Male.length)
+console.log("Number of possibilities with at least 2 boys:", with2Male.length)
+
+console.log("Probability of both boys, knowing that one is a boy:", (with2Male.length / with1Male.length))
 
 
