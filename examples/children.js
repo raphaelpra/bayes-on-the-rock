@@ -1,6 +1,4 @@
-const { Genders } = require("../dist/lib/ChoiceSet")
-const { cartesian } = require("../dist/lib/fp/cartesian")
-const { filter } = require("../dist/lib/fp/filter")
+const { Genders, WeekDay } = require("../dist/lib/ChoiceSet")
 
 console.log("A family has two children: Alex and Leslie.")
 console.log("We don't know the gender of either kids.")

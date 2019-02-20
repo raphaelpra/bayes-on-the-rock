@@ -12,6 +12,16 @@ export const ChoiceSet: ChoiceSetType = flowRight(
 
 export const CoinFlip: ChoiceSetType<string> = () => ChoiceSet("head", "tails")
 export const Genders: ChoiceSetType<string> = () => ChoiceSet("male", "female")
+export const WeekDay: ChoiceSetType<string> = () =>
+  ChoiceSet(
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday"
+  )
 
 export type DiceType = (n: number) => Univers<number>
 export const Dice: DiceType = (n: number) =>
