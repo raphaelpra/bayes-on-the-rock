@@ -1,5 +1,5 @@
-import { Univers } from "../types/Univers";
-import { map } from "lodash/fp";
-import { eventWeight } from "../event";
+import { Distribution } from "../types/Distribution";
 
-export const eachWeight = <T>(univers: Univers<T>): number[] => map(eventWeight)(univers);
+export const eachWeight = <T>(distribution: Distribution<T>): number[] => (
+  distribution.all().map((t: T) => distribution.measure([t]))
+)
