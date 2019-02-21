@@ -4,13 +4,13 @@ describe("ChoiceSet test", () => {
   it("Has equaly distributed outcomes", () => {
     const choiceSet = ChoiceSet("option1", "option2", "option3")
     expect(choiceSet.all()).toEqual([
-      "options1",
-      "options2",
-      "options3"
+      "option1",
+      "option2",
+      "option3"
     ])
 
     expect(choiceSet.measureOne("option1")).toEqual(1)
-    expect(choiceSet.measureOne("other")).toEqual(2)
+    expect(choiceSet.measureOne("other")).toEqual(0)
   })
 })
 
@@ -39,7 +39,7 @@ describe("Genders", () => {
 describe("Dices", () => {
   it("Has an outcome of 1/2/3/4/5/6", () => {
     const dice = Dice(6)
-    expect(dice).toEqual([
+    expect(dice.all()).toEqual([
       1,
       2,
       3,
@@ -47,5 +47,6 @@ describe("Dices", () => {
       5,
       6,
     ])
+    expect(dice.measureOne(1)).toEqual(1)
   })
 })

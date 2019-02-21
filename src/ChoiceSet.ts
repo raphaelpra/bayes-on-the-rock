@@ -1,10 +1,11 @@
-import { find, times, includes, sum, map } from "lodash/fp"
-import { Variable, Distribution } from "./types/Distribution";
+import { times, includes } from "lodash/fp"
+import { Variable } from "./types/Distribution";
+import { V } from "./Variable"
 
 export type ChoiceSetVariable<T> = (...options: T[]) => Variable<T>
 
 // @ts-ignore
-export const ChoiceSet: ChoiceSetVariable = <T>(options: T[]) => V({
+export const ChoiceSet: ChoiceSetVariable = <T>(...options: T[]) => V({
   all: () => options,
   measureOne: (o: T) => includes(o, options) ? 1 : 0
 })

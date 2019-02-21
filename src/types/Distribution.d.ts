@@ -8,7 +8,7 @@ export interface Variable<T> extends Distribution<T> {
   probability: (p: Predicat<T>) => number
   knowingThat: (p: Predicat<T>) => Distribution<T>
   print: (strftime?: string ) => Distribution<T>
-  independant: <U>(d2: Distribution<U>) => Distribution<[T, U]>
+  // independant: <U>(d2: Distribution<U>) => Distribution<[T, U]>
 }
 
 export type Predicat<T> = (t: T) => boolean
